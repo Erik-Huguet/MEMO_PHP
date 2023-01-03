@@ -12,22 +12,47 @@
               </div>
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Nom</span>
-                <input type="text" class="form-control" placeholder="Votre nom" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="Votre nom" aria-label="Nom" aria-describedby="basic-addon1">
             </div>
-            <div class="mb-3">
-                <label for="InputTextPrenom" class="form-label">Prenom</label>
-                <input type="text" class="form-control" id="InputTextPrenom">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">Prenom</span>
+                <input type="text" class="form-control" placeholder="Votre prénom" aria-label="Prenom" aria-describedby="basic-addon2">
             </div>
-            <div class="mb-3">
-                <label for="InputTextEmail" class="form-label">Email</label>
-                <input type="email" class="form-control" id="InputTextEmail">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" placeholder="Server" aria-label="Server">
             </div>
-              <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-              </div>
 
-          <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="input-group">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="radio" value="" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Proposition d'emploi
+                    </label>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="radio" value="" name="flexRadioDefault" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Proposition d'information
+                    </label>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="radio" value="" name="flexRadioDefault" id="flexRadioDefault3">
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Proposition de prestation
+                    </label>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-5">
+                <button type="submit" class="btn btn-primary ">Submit</button>
+            </div>
+
         </fieldset>
     </form>
 </section>
