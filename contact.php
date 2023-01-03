@@ -1,5 +1,5 @@
 <section class="container-fluid">
-    <form class="form ">
+    <form class="form " action="Controller/FormulaireController.php">
         <fieldset >
             <legend>Formulaire de contact</legend>
               <div class="mb-4 ">
@@ -56,3 +56,5 @@
         </fieldset>
     </form>
 </section>
+
+<?php print_r($_POST) ?>
