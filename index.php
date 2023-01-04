@@ -37,9 +37,6 @@
         </header>
         <?php
             switch ($_SERVER['REQUEST_URI']) {
-                case '/':
-                    include 'nomdelapage.php';
-                    break;
                 case '/montagne':
                     include 'pages/montagne.php';
                     break;
@@ -53,7 +50,7 @@
                     include 'contact.php';
                     break;
                 default:
-                    include 'notfound.php';
+                    include 'nomdelapage.php';
                     break;
             }
         ?>
