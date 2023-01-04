@@ -3,23 +3,29 @@
 if($_SERVER["REQUEST_METHOD"] === "POST")
 
 {
-    $message[] = "";
+    $messageErreur[] = "";
+
+    if(($_POST['civilite']) != "")
+    {
+        $messageErreur = 'Veuillez renseigner votre civilité svp !';
+    }
+    //var_dump($_POST['civilite']);
+
     if(empty($_POST['nom']))
     {
-        $message = 'Veuillez renseigner votre nom svp !';
+        $messageErreur = 'Veuillez renseigner votre nom svp !';
     }
-
     elseif(empty($_POST['prenom']))
     {
-        $message = 'Veuillez renseigner votre prenom svp !';
+        $messageErreur = 'Veuillez renseigner votre prenom svp !';
     }
     elseif(empty($_POST['email']))
     {
-        $message = ' Veuillez renseigner votre mail svp';
+        $messageErreur = ' Veuillez renseigner votre mail svp';
     }
     elseif(empty($_POST['flexRadioDefault']))
     {
-        $message = ' Veuillez selectionnner un choix svp';
+        $messageErreur = ' Veuillez selectionnner un choix svp';
 
     }else{
         $date = date('Y-m-d-H-i-s');
@@ -33,24 +39,36 @@ if($_SERVER["REQUEST_METHOD"] === "POST")
         }
         file_put_contents($fileForm, PHP_EOL, FILE_APPEND);
     }
-        echo $message;
 
+    //var_dump($messageErreur);
 }elseif($_SERVER["REQUEST_METHOD"] === 'GET')
-{
-    ?>
 
+{
+?>
     <section class="container-fluid">
         <form class="form " action="contact.php" method="POST">
             <fieldset >
                 <legend>Formulaire de contact</legend>
                   <div class="mb-4 ">
 
+                      <?php
+                        try{
+
+                      ?>
                       <select class="form-select form-select-lg mb-4 " aria-label=".form-select-lg " name="civilite">
-                          <option selected>Selectionné votre civilité</option>
-                          <option value="mr">Mr</option>
-                          <option value="mme">Mme</option>
-                          <option value="mlle">Mlle</option>
+                          <option name="civilite[]" value="">Selectionné votre civilité</option>
+                          <option name="civilite[]" value="Mr">Mr</option>
+                          <option name="civilite[]" value="Mme">Mme</option>
+                          <option name="civilite[]" value="Mlle">Mlle</option>
                       </select>
+                      <?php
+                        }catch (Exception $messageErreur){
+                        echo '<p>'. $messageErreur.'</p>';
+
+                        }
+                        ?>
+
+
                   </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Nom</span>
