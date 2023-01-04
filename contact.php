@@ -1,32 +1,39 @@
 <?php
+
 if($_SERVER["REQUEST_METHOD"] === "POST")
 
 {
-    $message = "";
+    $message[] = "";
     if(empty($_POST['nom']))
     {
         $message = 'Veuillez renseigner votre nom svp !';
     }
-    // Le prenom est-il rempli ?
+
     elseif(empty($_POST['prenom']))
     {
-        $message = 'Veuillez renseigner votre svp !';
+        $message = 'Veuillez renseigner votre prenom svp !';
     }
     elseif(empty($_POST['email']))
     {
-        $message = ' Veuillez renseigner votre mail';
+        $message = ' Veuillez renseigner votre mail svp';
     }
     elseif(empty($_POST['flexRadioDefault']))
     {
-        $message = ' Veuillez selectionnner un choix';
+        $message = ' Veuillez selectionnner un choix svp';
+
     }else{
-        $forms[] = $_POST ;
-        var_dump($forms);
+        $date = date('Y-m-d-H-i-s');
+        $name = $_POST['nom'];
+        $fileForm = $name . '_' . $date. '.txt';
+
+        foreach($_POST as $key => $value) {
+            $forms = filter_input(INPUT_POST, $key) . ': ';
+
+            file_put_contents($fileForm, $forms, FILE_APPEND);
+        }
+        file_put_contents($fileForm, PHP_EOL, FILE_APPEND);
     }
-
         echo $message;
-
-
 
 }elseif($_SERVER["REQUEST_METHOD"] === 'GET')
 {
@@ -37,6 +44,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST")
             <fieldset >
                 <legend>Formulaire de contact</legend>
                   <div class="mb-4 ">
+
                       <select class="form-select form-select-lg mb-4 " aria-label=".form-select-lg " name="civilite">
                           <option selected>Selectionné votre civilité</option>
                           <option value="mr">Mr</option>
